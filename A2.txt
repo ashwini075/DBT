@@ -1,0 +1,14 @@
+1) Which Field  of the customers table is the primary key?
+--> CNUM is primary key
+
+2)What is the 4th column of the customer table?
+--> COMM is 4th column of customer table
+
+3)What is another word for row?For column?
+-->      Dbms                  Rdbms
+Row-----Record                 Tuple,row,entity,oppertunity
+
+column--field                  column,attribute,method
+
+4)Why isn't possible to see the first  five rows of a table?
+-->No,not possible to see first five rows.
