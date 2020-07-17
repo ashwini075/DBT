@@ -12,4 +12,4 @@
 
 
 5) Write a query that will produce the snum values of all salespeople (suppress the duplicates) with orders in the Orders table.
-->select distinct snum from orders order by snum;
+->select distinct snum from orders ;
