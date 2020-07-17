@@ -1,0 +1,7 @@
+1)Does ANSI recognize the Date datatype?
+-->Yes
+  YYYY-MM-DD is the default Date format.
+
+2)Which Subdivision of SQL is used to insert values in tables?
+-->INSERT is Used to INSERT data into Table.
+E.g. INSERT into Student values (01,'Ashwini');
