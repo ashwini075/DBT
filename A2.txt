@@ -11,4 +11,5 @@ Row-----Record                 Tuple,row,entity,oppertunity
 column--field                  column,attribute,method
 
 4)Why isn't possible to see the first  five rows of a table?
--->No,not possible to see first five rows.
+-->When you update a row ,if the row length is increasing ,then the entire row may be moved to move other address.
+Later when you SELECT from the table ,you find the row at some other position in the output.so it is not possible to view first or last 'n' rows of table.
