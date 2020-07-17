@@ -2,7 +2,8 @@ Assignment –5
 Relational and Logical Operators.
 
 1) Write a query that will give you all orders for more than Rs. 1,000.
-->
+->select * from orders where amt >1000;
+
 
 2) Write a query that will give you the names and cities of all salespeople in London with a commission above .10.
 ->select Sname,city from salespeople where city='London' and comm >.10;
