@@ -36,7 +36,177 @@ VALUES('0003','ALI',4000,'10',0001);
 INSERT INTO SEMP(EMPNO,EMPNAME,BASIC,DEPTNO,DEPTHEAD)
 VALUES('0004','GEORGE',6000,null,0002);
 
-5.
-CREATE TABLE S
+----
+CREATE TABLE SUPPLIER
 (
-`S#` 
+`S#` CHAR(4),
+SNAME CHAR(20),
+STATUS CHAR(10),
+CITY CHAR(10)
+);
+
+CREATE TABLE PARTS
+(
+`P#` CHAR(4),
+PNAME CHAR(20),
+COLOR CHAR(10),
+WEIGHT INT(4),
+CITY CHAR(10)
+);
+
+CREATE TABLE PROJECTS
+(
+`J#` CHAR(4),
+JNAME CHAR(20),
+CITY CHAR(10)
+);
+
+CREATE TABLE SUPPLIER_PARTS_PROJECT
+(
+`S#` CHAR(4),
+`P#` CHAR(4),
+`J#` CHAR(4),
+QTY INT(4)
+);
+
+    
+    insert into SUPPLIER(`S#`, Sname, Status, City)
+    values('S1', 'bob', '25' , 'london'),
+           ('S2', 'shinchan', '22', 'Athens'),
+           ('S3', 'oswald', '12', 'london'), 
+            ('S4', 'Jay', '10', 'Athens'),   
+             ('S5', 'Anne', '28', 'Paris');   
+
+    insert into PARTS(`P#`, Pname, Color,Weight ,City)
+    values('P1', 'koko', 'white' ,20, 'Gondia'),
+           ('P2', 'kittu', 'black',13, 'pune'),
+           ('P3', 'jiya', 'red',14,'London'),
+           ('P4', 'tanie', 'red',12,'paris');
+              
+
+    insert into PROJECTS(`J#`, Jname, City)
+    values('J1', 'Noddy' ,'Athens'),
+          ('J2', 'Nobita','Paris'),
+          ('J3','Kiteretsu','Athens');
+
+     insert into SUPPLIER_PARTS_PROJECT(`S#`,`P#`,`J#`, QTY)
+    values('S1', 'P1' ,'J1',400),
+          ('S2', 'P2','J2',724),
+          ('S3','P3','J1',250);
+
+5.
+select * from Supplier;
++------+----------+--------+--------+
+| S#   | SNAME    | STATUS | CITY   
++------+----------+--------+--------+
+| S1   | bob      | 25     | london |
+| S2   | shinchan | 22     | Athens |
+| S3   | oswald   | 12     | london |
+| S4   | Jay      | 10     | Athens |
+| S5   | Anne     | 28     | Paris  |
++------+----------+--------+--------+
+
+6.
+select `S#`,sname from supplier;
++------+----------+
+| S#   | sname    |
++------+----------+
+| S1   | bob      |
+| S2   | shinchan |
+| S3   | oswald   |
+| S4   | Jay      |
+| S5   | Anne     |
++------+----------+
+
+7.
+Select pname,color from parts where city='London';
+
++-------+-------+
+| pname | color |
++-------+-------+
+| jiya  | red   |
++-------+-------+
+
+8.
+Select * from supplier where city='London';
++------+--------+--------+--------+
+| S#   | SNAME  | STATUS | CITY   |
++------+--------+--------+--------+
+| S1   | bob    | 25     | london |
+| S3   | oswald | 12     | london |
++------+--------+--------+--------+
+
+9.
+Select * from supplier where city='Paris' or city='Athens';
+
++------+----------+--------+--------+
+| S#   | SNAME    | STATUS | CITY   |
++------+----------+--------+--------+
+| S2   | shinchan | 22     | Athens |
+| S4   | Jay      | 10     | Athens |
+| S5   | Anne     | 28     | Paris  |
++------+----------+--------+--------+
+
+10.
+Select * from projects where city='Athens';
++------+-----------+--------+
+| J#   | JNAME     | CITY   |
++------+-----------+--------+
+| J1   | Noddy     | Athens |
+| J3   | Kiteretsu | Athens |
+| J1   | Noddy     | Athens |
+| J3   | Kiteretsu | Athens |
++------+-----------+--------+
+
+11. Select pname ,weight from parts where weight between 12 and 14;
+
++-------+--------+
+| pname | weight |
++-------+--------+
+| kittu |     13 |
+| jiya  |     14 |
+| tanie |     12 |
++-------+--------+
+
+12.select status from supplier where status>=20;
+
++--------+
+| status |
++--------+
+| 25     |
+| 22     |
+| 28     |
++--------+
+
+13.
+select * from supplier where city !='London';
+
++------+----------+--------+--------+
+| S#   | SNAME    | STATUS | CITY   |
++------+----------+--------+--------+
+| S2   | shinchan | 22     | Athens |
+| S4   | Jay      | 10     | Athens |
+| S5   | Anne     | 28     | Paris  |
++------+----------+--------+--------+
+
+14.
+select distinct city from supplier;
++--------+
+| city   |
++--------+
+| london |
+| Athens |
+| Paris  |
++--------+
+
+15.
+Select weight ,weight as Grams,weight*0.001 as kilograms,weight*1000 as miligrams from parts;
++--------+-------+-----------+-----------+
+| weight | Grams | kilograms | miligrams |
++--------+-------+-----------+-----------+
+|     20 |    20 |     0.020 |     20000 |
+|     13 |    13 |     0.013 |     13000 |
+|     14 |    14 |     0.014 |     14000 |
+|     12 |    12 |     0.012 |     12000 |
++--------+-------+-----------+-----------+
+
