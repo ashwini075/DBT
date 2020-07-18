@@ -82,12 +82,13 @@ QTY INT(4)
            ('P2', 'kittu', 'black',13, 'pune'),
            ('P3', 'jiya', 'red',14,'London'),
            ('P4', 'tanie', 'red',12,'paris');
-              
+      insert into parts values('p5','Suji','blue', 24,'kyuv');        
 
     insert into PROJECTS(`J#`, Jname, City)
     values('J1', 'Noddy' ,'Athens'),
           ('J2', 'Nobita','Paris'),
           ('J3','Kiteretsu','Athens');
+insert into projects values('J4','Sam','Tokyo');
 
      insert into SUPPLIER_PARTS_PROJECT(`S#`,`P#`,`J#`, QTY)
     values('S1', 'P1' ,'J1',400),
