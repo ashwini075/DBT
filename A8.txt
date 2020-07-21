@@ -19,4 +19,4 @@ select rating ,cname,cnum from customer order by rating desc;
 
 #4) Write a query that totals the orders for each day and places the results in descending order.
 select * from orders;
-select odate ,count(odate) from orders group by odate order by odate;`````````````````````````````````````````````
+select odate ,count(odate) from orders group by odate order by odate;
