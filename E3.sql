@@ -32,3 +32,18 @@ select sname,length(sname) from supplier;
 #8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.
 insert into supplier values('S7','Bloke','39','Loni');
 select * from supplier where soundex(sname)=soundex('BLOKE');
+
+#9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+Select * from supplier;
+select Sname, case
+when Status = '10' then 'Ten'
+when Status = '20' then 'Twenty'
+when Status = '30' then 'Thirty'
+when Status = '40' then 'Fourty'
+when Status = '50' then 'Fifty'
+else 'Others'
+end as StatusText
+from SUPPLIER;
+ 
+#10. Display the current day (e.g. Thursday).
+select dayname(curdate());
