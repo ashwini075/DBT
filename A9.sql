@@ -19,4 +19,5 @@ select sname,cname,onum from orders as o,salespeople as s,customer as c where o.
 select customer.cname,salespeople.sname,salespeople.comm*100 as comm from customer,salespeople where customer.snum=salespeople.snum and comm>0.12;
 
 #4) Write a query that calculates the amount of the salesperson’s commission on each order by a customer with a rating above 100.
+
 select amt,comm from salespeople join customer using (snum) join orders using(snum) where rating > 100;
