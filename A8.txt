@@ -12,6 +12,8 @@ select onum,snum,amt ,(amt*12)/100 as comm from orders ;
 
 select distinct(city) from customer;
 select city,max(rating) as rating from customer group by city;
+or
+select concat("For the city ",city," the hightest rating is: ",max(rating),".") as NewTable from customer group by city;
 
 #3) Write a query that lists customers in descending order of rating. Output the rating field first, followed by the customer’s name and number.
 
