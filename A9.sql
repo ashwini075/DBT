@@ -1,6 +1,7 @@
 #Assignment – 9
 #Querying Multiple Tables at Once.
 use assignment1;
+
 show tables;
 select * from orders;
 select * from customer;
@@ -21,3 +22,6 @@ select customer.cname,salespeople.sname,salespeople.comm*100 as comm from custom
 #4) Write a query that calculates the amount of the salesperson’s commission on each order by a customer with a rating above 100.
 
 select amt,comm from salespeople join customer using (snum) join orders using(snum) where rating > 100;
+#or 
+select amt,comm from orders A,customer B, salespeople C
+	where A.snum = C.snum AND A.snum = B.snum AND rating > 100;
