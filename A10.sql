@@ -7,4 +7,5 @@ select s1.sname,s2.sname,s1.city from salespeople s1,salespeople s2 where s1.cit
 
 #2) Write a query that produces the names and cities of all customers with the same rating as Hoffman.
 select cname,city from customer where rating=(select rating from customer where cname='Hoffman');
-    
+     # or 
+select b.cname,b.city from customer a, customer b where a.rating = b.rating and a.cname='Hoffman';
