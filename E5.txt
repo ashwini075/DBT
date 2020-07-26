@@ -1,0 +1,88 @@
+
+SQL Exercise 5
+1. Display the Supplier name and the Quantity sold.
+ -->  select sname ,qty from supplier,supplier_parts_project
+        where supplier_parts_project.`S#`=supplier.`S#`
+        group by sname;
+        +----------+------+
+        | sname    | qty  |
+        +----------+------+
+        | bob      |  400 |
+        | shinchan |  724 |
+        | oswald   |  250 |
+        +----------+------+
+
+2. Display the Part name and Quantity sold.
+  -->  select pname ,qty from parts,supplier_parts_project 
+        where supplier_parts_project.`P#`=parts.`P#` 
+        group by pname;
+        +-------+------+
+        | pname | qty  |
+        +-------+------+
+        | koko  |  400 |
+        | kittu |  724 |
+        | jiya  |  250 |
+        | Suji  |  900 |
+        +-------+------+
+
+3. Display the Project name and Quantity sold.
+  -->  select jname ,qty from projects,supplier_parts_project 
+       where supplier_parts_project.`J#`=projects.`J#`
+        group by jname;
+        +--------+------+
+        | jname  | qty  |
+        +--------+------+
+        | Noddy  |  400 |
+        | Nobita |  724 |
+        +--------+------+
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+ -->    select sname,pname,jname,qty from  supplier,parts,projects ,supplier_parts_project 
+        where supplier.`S#`=supplier_parts_project.`S#` and  parts.`P#`=supplier_parts_project.`P#` 
+        and  projects.`J#`=supplier_parts_project.`J#`
+        group by qty;
+            +----------+-------+--------+------+
+            | sname    | pname | jname  | qty  |
+            +----------+-------+--------+------+
+            | bob      | koko  | Noddy  |  400 |
+            | oswald   | jiya  | Noddy  |  250 |
+            | shinchan | kittu | Nobita |  724 |
+            +----------+-------+--------+------+
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+-->select sname,city from supplier where (sname,city) =any( select pname,city from parts group by city) ;
+
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold.
+-->select pname,qty from supplier_parts_project,parts where parts.`P#`=supplier_parts_project.`p#` and color='red';
+    +-------+------+
+    | pname | qty  |
+    +-------+------+
+    | jiya  |  250 |
+    | jiya  |  250 |
+    +-------+------+
+
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+ -->  select `S#`,qty from supplier_parts_project where `S#`= (select `S#` from supplier where status=25);
+    +------+------+
+    | S#   | qty  |
+    +------+------+
+    | S1   |  400 |
+    | S1   |  400 |
+    +------+------+
+
+8. Display all the Parts and Quantity with a Weight > 14.
+ --> 
+ select parts.`P#`,qty from supplier_parts_project ,parts where supplier_parts_project.`P#`=parts.`P#` and weight>14 order by qty;
++------+------+
+| P#   | qty  |
++------+------+
+| P1   |  400 |
+| P1   |  400 |
+| p5   |  900 |
++------+------+
+
+9. Display all the Project names and City, which has bought more than 500 Parts.
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+
+11. Display all the Employee names and the name of their Managers.
