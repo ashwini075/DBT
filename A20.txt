@@ -12,7 +12,7 @@ Create View Custotals
 as 
 Select cname, Sum (amt) Sum_Amt from Orders, Customer
 where Orders.cnum=Customer.cnum Group by cname;
-ans-Views are note updatable which consists of join.
+ans->Views are note updatable which consists of join.
 
 
 #3
@@ -20,17 +20,18 @@ Create view Thirdorders
 as 
 Select * from Dailyorders where odate=’1990-10-03’;
 
- ans-not updatable due to distinct keyword in dailyorders;
+ ans->not updatable due to distinct keyword in dailyorders;
  
 #4
 Create view Nullcities
 as Select snum, sname, city
 from Salespeople where city is NULL
 OR sname BETWEEN ‘A’ and ‘MZ’;
-ams-yes
+ans->yes
 
 2) Create a view of the Salespeople table called Commissions. This view will include only the snum and comm fields. 
 Through this view, someone could enter or change commissions, but only to values between .10 and .20.
+-->
 select * from salespeople;
 create view snum_c
 as
@@ -45,4 +46,23 @@ accessed by commands such as Select or Insert. We will use a view of the Orders 
  Create the Orders table, so that SYSDATE is automatically inserted for odate if no value is given. Then create the Entryorders view 
  so that no values can be given.
  
+ -->
+  create table ORDERSnew1
+(
+	Onum INT(4),
+	Amt FLOAT(7,2),
+	Odate datetime default current_timestamp,
+	Cnum INT(4),
+	Snum INT(4),
+    constraint pk_onum primary key(onum)
+);
+
+select * from ordersnew1;
+
+create view Entryorders 
+as 
+select * from ORDERSnew1;
  
+insert into ordersnew1 values(101,3400,null,202,301);
+ insert into ordersnew1 (onum,amt,cnum,snum)values(102,3400,202,301);
+insert into ordersnew1 (onum,amt,cnum,snum)values(107,3400,202,301);
